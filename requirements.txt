@@ -1,0 +1,1 @@
+-r sparkle-sales-buddy-main/backend/requirements.txt
