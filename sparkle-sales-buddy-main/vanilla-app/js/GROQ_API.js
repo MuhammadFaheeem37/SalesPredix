@@ -2,7 +2,7 @@
 // Get your API key from: https://console.groq.com
 
 const GROQ_CONFIG = {
-    API_KEY: "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", // Groq API key for SalesPredix
+    API_KEY: window.GROQ_API_KEY || "YOUR_GROQ_API_KEY", // Set via environment variable or window global
     ENDPOINT: "https://api.groq.com/openai/v1/chat/completions",
     MODELS: {
         LLAMA2_70B: "llama2-70b-4096",
