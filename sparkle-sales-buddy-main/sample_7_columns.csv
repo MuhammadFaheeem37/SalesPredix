@@ -1,0 +1,6 @@
+Sale_Date,Product_ID,Quantity_Sold,Sales_Amount,Product_Category,Region,Unit_Cost
+2025-01-01,PROD-001,5,500,Electronics,North America,300
+2025-01-02,PROD-002,3,450,Furniture,Europe,270
+2025-01-03,PROD-003,8,800,Appliances,Asia,480
+2025-01-04,PROD-004,2,300,Electronics,North America,200
+2025-01-05,PROD-005,6,600,Furniture,Europe,360

@@ -1,0 +1,6 @@
+sale_date,product_name,sold,amount,category,region,cost,profit
+2025-01-01,Widget A,15,1500,Hardware,Asia,900,600
+2025-01-02,Widget B,20,2000,Software,Europe,800,1200
+2025-01-03,Widget C,8,800,Hardware,North America,480,320
+2025-01-04,Widget D,25,2500,Software,South America,1000,1500
+2025-01-05,Widget E,10,1000,Hardware,Africa,600,400

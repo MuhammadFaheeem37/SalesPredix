@@ -1,0 +1,6 @@
+order date,item,solid,sales,product_category,territory,cogs,net_earnings
+2025-01-01,Laptop X1,5,2500,Electronics,North America,1500,1000
+2025-01-02,Desk Chair Pro,10,3000,Furniture,Europe,1800,1200
+2025-01-03,Phone Y2,8,4000,Electronics,Asia,2400,1600
+2025-01-04,Garden Tool Set,3,450,Home & Garden,South America,270,180
+2025-01-05,Smart Watch Z3,12,6000,Electronics,North America,3600,2400

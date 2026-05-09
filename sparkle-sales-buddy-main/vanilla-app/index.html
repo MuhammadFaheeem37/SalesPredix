@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SalesPredix - Analytics Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+    
+    <!-- Main App Container -->
+    <div id="app" class="app-container">
+        <!-- Sidebar Backdrop (for mobile overlay) -->
+        <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+        
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-sparkles"></i>
+                <h1>SalesPredix</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <!-- Step 0: Upload (Always accessible first) -->
+                <a href="#/upload" class="nav-item active" data-page="upload" data-step="0">
+                    <i class="fas fa-upload"></i>
+                    <span>1. Upload Data</span>
+                    <i class="fas fa-check-circle nav-complete-icon" style="display: none; color: #10b981; margin-left: auto;"></i>
+                </a>
+                
+                <!-- Step 1: Dashboard (Requires Upload) -->
+                <a href="#/" class="nav-item" data-page="dashboard" data-step="1" data-locked="true">
+                    <i class="fas fa-chart-line"></i>
+                    <span>2. Dashboard</span>
+                    <i class="fas fa-lock nav-lock-icon" style="margin-left: auto; color: var(--color-text-tertiary);"></i>
+                    <i class="fas fa-check-circle nav-complete-icon" style="display: none; color: #10b981; margin-left: auto;"></i>
+                </a>
+                
+                <!-- Step 2: Predictions (Requires Dashboard) -->
+                <a href="#/predictions" class="nav-item" data-page="predictions" data-step="2" data-locked="true">
+                    <i class="fas fa-crystal-ball"></i>
+                    <span>3. Predictions</span>
+                    <i class="fas fa-lock nav-lock-icon" style="margin-left: auto; color: var(--color-text-tertiary);"></i>
+                    <i class="fas fa-check-circle nav-complete-icon" style="display: none; color: #10b981; margin-left: auto;"></i>
+                </a>
+                
+                <!-- Step 3: Analytics (Requires Predictions) -->
+                <a href="#/analytics" class="nav-item" data-page="analytics" data-step="3" data-locked="true">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>4. Analytics</span>
+                    <i class="fas fa-lock nav-lock-icon" style="margin-left: auto; color: var(--color-text-tertiary);"></i>
+                    <i class="fas fa-check-circle nav-complete-icon" style="display: none; color: #10b981; margin-left: auto;"></i>
+                </a>
+                
+                <!-- Step 4: AI Assistant (Requires Analytics) -->
+                <a href="#/assistant" class="nav-item" data-page="assistant" data-step="4" data-locked="true">
+                    <i class="fas fa-robot"></i>
+                    <span>5. AI Assistant</span>
+                    <i class="fas fa-lock nav-lock-icon" style="margin-left: auto; color: var(--color-text-tertiary);"></i>
+                    <i class="fas fa-check-circle nav-complete-icon" style="display: none; color: #10b981; margin-left: auto;"></i>
+                </a>
+                
+                <!-- Step 5: Achievements (Requires AI Assistant) -->
+                <a href="#/achievements" class="nav-item" data-page="achievements" data-step="5" data-locked="true">
+                    <i class="fas fa-trophy"></i>
+                    <span>6. Achievements</span>
+                    <i class="fas fa-lock nav-lock-icon" style="margin-left: auto; color: var(--color-text-tertiary);"></i>
+                    <i class="fas fa-check-circle nav-complete-icon" style="display: none; color: #10b981; margin-left: auto;"></i>
+                </a>
+                
+                <div style="border-top: 1px solid var(--color-border); margin: 1rem 0;"></div>
+                
+                <!-- User Profile Section -->
+                <div id="user-profile" class="user-profile nav-profile">
+                    <div class="user-avatar-container">
+                        <img id="user-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/%3E%3C/svg%3E" alt="User Avatar" />
+                        <span class="online-indicator"></span>
+                    </div>
+                    <div class="user-info">
+                        <span id="user-name" class="user-name">M.FAHEEM</span>
+                        <span id="user-email" class="user-email">2023-se-12045@uosah...</span>
+                    </div>
+                </div>
+                
+                <!-- Weather Indicator -->
+                <div class="weather-indicator" style="display: flex; align-items: center; gap: 8px; padding: 0.75rem 1rem; margin: 0.5rem 0; color: var(--color-text-secondary); font-size: 0.875rem;">
+                    <i class="fas fa-sun" style="color: #f59e0b;"></i>
+                    <span>20°C Mostly sunny</span>
+                </div>
+                
+                <a href="#/settings" class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            
+            <!-- Logout Section -->
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item logout-btn" onclick="app.logout(event)">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <button id="sidebar-toggle" class="btn-icon">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-actions">
+                    <button id="theme-toggle" class="btn-icon" title="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="refresh-data" class="btn-icon" title="Refresh data">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div id="page-content" class="page-content">
+                <!-- Content will be loaded here dynamically -->
+            </div>
+        </main>
+        
+        <!-- Mobile Bottom Navigation -->
+        <nav id="mobile-bottom-nav" class="mobile-bottom-nav">
+            <a href="#/upload" class="mobile-nav-item active" data-page="upload" data-step="0">
+                <i class="fas fa-upload"></i>
+                <span>Upload</span>
+            </a>
+            <a href="#/" class="mobile-nav-item" data-page="dashboard" data-step="1" data-locked="true">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#/predictions" class="mobile-nav-item" data-page="predictions" data-step="2" data-locked="true">
+                <i class="fas fa-crystal-ball"></i>
+                <span>Predict</span>
+            </a>
+            <a href="#/analytics" class="mobile-nav-item" data-page="analytics" data-step="3" data-locked="true">
+                <i class="fas fa-chart-pie"></i>
+                <span>Analytics</span>
+            </a>
+            <a href="#/assistant" class="mobile-nav-item" data-page="assistant" data-step="4" data-locked="true">
+                <i class="fas fa-robot"></i>
+                <span>AI</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Login Trigger Button (Fixed Position) -->
+    <button id="login-trigger-btn" 
+            data-login-button
+            style="position: fixed;
+                   bottom: 20px;
+                   right: 20px;
+                   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                   color: white;
+                   padding: 12px 24px;
+                   border: none;
+                   border-radius: 25px;
+                   font-size: 14px;
+                   font-weight: 600;
+                   cursor: pointer;
+                   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                   transition: all 0.3s ease;
+                   z-index: 9999;
+                   display: flex;
+                   align-items: center;
+                   gap: 8px;">
+        <i class="fas fa-lock"></i>
+        Login / Track Activity
+    </button>
+
+    <!-- Activity Logs Table (Add this if you want to see logs in the page) -->
+    <div id="activity-logs-section" style="display: none; position: fixed; bottom: 80px; right: 20px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); max-width: 600px; max-height: 400px; overflow-y: auto; z-index: 9998;">
+        <h3 style="margin-top: 0; color: #2c3e50; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-list-alt"></i>
+            Recent Login Activity
+            <button id="close-activity-logs" style="margin-left: auto; background: #e74c3c; color: white; border: none; border-radius: 4px; padding: 4px 8px; cursor: pointer;">✕</button>
+        </h3>
+        <table id="activity-logs-table" style="width: 100%; border-collapse: collapse; font-size: 12px;">
+            <thead>
+                <tr style="background: #f8f9fa; text-align: left;">
+                    <th style="padding: 8px; border-bottom: 2px solid #dee2e6;">Log ID</th>
+                    <th style="padding: 8px; border-bottom: 2px solid #dee2e6;">Action</th>
+                    <th style="padding: 8px; border-bottom: 2px solid #dee2e6;">User</th>
+                    <th style="padding: 8px; border-bottom: 2px solid #dee2e6;">Timestamp</th>
+                    <th style="padding: 8px; border-bottom: 2px solid #dee2e6;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Login activity will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- SheetJS for Excel file parsing -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    
+    <!-- AI APIs for AI Assistant -->
+    <script src="js/GROQ_API.js"></script>
+    <script src="js/DEEPSEEK_API.js"></script>
+    
+    <!-- Smart Data Analyzer -->
+    <script src="js/dataAnalyzer.js"></script>
+    
+    <!-- Application Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/pages.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- Login Prompt System -->
+    <script src="js/loginPrompt.js"></script>
+    
+    <script>
+        // Setup login trigger button
+        document.getElementById('login-trigger-btn').addEventListener('click', function() {
+            if (window.loginPrompt) {
+                window.loginPrompt.triggerLogin();
+                // Show activity logs section
+                document.getElementById('activity-logs-section').style.display = 'block';
+            } else {
+                alert('Login system not loaded. Please refresh the page.');
+            }
+        });
+        
+        // Close activity logs
+        document.getElementById('close-activity-logs').addEventListener('click', function() {
+            document.getElementById('activity-logs-section').style.display = 'none';
+        });
+        
+        // Add hover effect to login button
+        const loginBtn = document.getElementById('login-trigger-btn');
+        loginBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.boxShadow = '0 6px 20px rgba(0,0,0,0.3)';
+        });
+        loginBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.2)';
+        });
+    </script>
+</body>
+</html>
