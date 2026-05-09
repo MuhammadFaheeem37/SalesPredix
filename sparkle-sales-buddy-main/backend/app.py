@@ -72,17 +72,9 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
-<<<<<<< HEAD
     port = int(os.getenv('PORT', 5000))
     host = os.getenv('HOST', '0.0.0.0')
     print("🚀 Sparkle Sales Backend Server Starting...")
     print(f"📊 Admin Panel: http://{host}:{port}/admin")
     print("🔐 Default Admin: admin@sparklesales.com / admin123")
-    app.run(debug=True, port=port, host=host)
-=======
-    port = int(os.environ.get('PORT', 5000))
-    print("🚀 Sparkle Sales Backend Server Starting...")
-    print(f"📊 Admin Panel: http://localhost:{port}/admin")
-    print("🔐 Default Admin: admin@sparklesales.com / admin123")
-    app.run(host='0.0.0.0', port=port, debug=False)
->>>>>>> 270b6177ffa77471912de3df55c53478041db630
+    app.run(debug=False, port=port, host=host)
